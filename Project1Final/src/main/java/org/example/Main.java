@@ -68,11 +68,14 @@ public class Main {
                 anyAvailable = true;
             }
         }
+        // I am having some trouble with this part but I was able to get through it I am making a note for later
 
         if (!anyAvailable) {
             System.out.println("No books are currently available.");
             return;
         }
+
+        // needed help with figuring out the next part would like to go over more in class
 
         System.out.print("Enter the ID of the book to check out or 0 to return: ");
         int id = scanner.nextInt();
