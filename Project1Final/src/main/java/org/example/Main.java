@@ -7,6 +7,8 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         Book[] inventory = new Book[20];
 
+        // This is a note for me make sure that you have all the books , 5 is required but do all 20
+
         // Sample inventory of 20 books
         inventory[0] = new Book(1, "9780439139595", "Harry Potter and the Goblet of Fire");
         inventory[1] = new Book(2, "9780545010221", "Harry Potter and the Deathly Hallows");
