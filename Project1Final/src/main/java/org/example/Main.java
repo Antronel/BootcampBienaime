@@ -84,7 +84,7 @@ public class Main {
                     return;
                 }
             }
-            System.out.println("⚠️ Book not found or already checked out.");
+            System.out.println("Book not found or already checked out.");
         }
     }
 
