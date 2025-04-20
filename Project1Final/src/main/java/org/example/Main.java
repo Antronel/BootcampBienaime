@@ -9,7 +9,8 @@ public class Main {
 
         // This is a note for me make sure that you have all the books , 5 is required but do all 20
 
-        // Sample inventory of 20 books
+        // Sample inventory of 20 books that starts from Harry Potter but once I run out Ill start naming my other favs
+
         inventory[0] = new Book(1, "9780439139595", "Harry Potter and the Goblet of Fire");
         inventory[1] = new Book(2, "9780545010221", "Harry Potter and the Deathly Hallows");
         inventory[2] = new Book(3, "9780316769488", "The Catcher in the Rye");
@@ -30,6 +31,7 @@ public class Main {
         inventory[17] = new Book(18, "9780143039433", "Crime and Punishment");
         inventory[18] = new Book(19, "9780143105985", "The Odyssey");
         inventory[19] = new Book(20, "9780140449266", "The Iliad");
+
 
         while (true) {
             System.out.println("\n Welcome to the Neighborhood Library!");
