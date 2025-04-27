@@ -11,7 +11,7 @@ public class Main {
         List<Product> products = FileLoader.readFile();
 
         while (true) {
-            System.out.println("Welcome to Duke Electro Supplies!");
+            System.out.println("Welcome to The Exotic Pet Store");
             System.out.println("Choose your option:");
             System.out.println("1. View all products");
             System.out.println("2. Search by SKU");
@@ -75,7 +75,7 @@ public class Main {
 
     public static void displayAllProducts(List<Product> products) {
         for (Product inventory : products) {
-            System.out.println(inventory.getProductName() + " | " + inventory.getsku() + " | " + inventory.getDepartment() + " | $" + inventory.getPrice());
+            System.out.println(inventory.getProductName() + " | " + inventory.getSku() + " | " + inventory.getDepartment() + " | $" + inventory.getPrice());
         }
     }
 
@@ -91,7 +91,7 @@ public class Main {
 
     public static Product searchSku(List<Product> products, String sku) {
         for (Product product : products) {
-            if (product.getsku().equalsIgnoreCase(sku)) {
+            if (product.getSku().equalsIgnoreCase(sku)) {
                 return product;
             }
         }

@@ -18,7 +18,7 @@ public class ShoppingCart {
     public void removeProduct(String sku) {
         Product toRemove = null;
         for (Product product : this.products) {
-            if (product.getsku().equalsIgnoreCase(sku)) {
+            if (product.getSku().equalsIgnoreCase(sku)) {
                 toRemove = product;
                 break;
             }

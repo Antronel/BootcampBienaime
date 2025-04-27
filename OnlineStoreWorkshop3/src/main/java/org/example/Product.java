@@ -14,7 +14,7 @@ public class Product {
         this.department = department;
     }
 
-    public String getsku() {
+    public String getSku() {
         return sku;
     }
 
