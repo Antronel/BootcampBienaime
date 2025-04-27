@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ShoppingCart {
-    public double get;
-    private List<Product> products;
+    private final List<Product> products;
 
     public ShoppingCart() {
         this.products = new ArrayList<>();
@@ -18,7 +17,7 @@ public class ShoppingCart {
     public void removeProduct(String sku) {
         Product toRemove = null;
         for (Product product : this.products) {
-            if (product.getSku().equalsIgnoreCase(sku)) {
+            if (product.sku().equalsIgnoreCase(sku)) {
                 toRemove = product;
                 break;
             }
@@ -34,7 +33,7 @@ public class ShoppingCart {
     public double getCartTotal() {
         double total = 0.0;
         for (Product product : this.products) {
-            total += product.getPrice();
+            total += product.price();
         }
         return total;
     }

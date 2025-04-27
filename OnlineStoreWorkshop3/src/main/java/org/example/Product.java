@@ -1,48 +1,41 @@
 package org.example;
 
-public class Product {
+import java.text.NumberFormat;
+import java.util.Locale;
+import java.util.Objects;
 
-    private String sku;
-    private String productName;
-    private double price;
-    private String department;
+public record Product(String sku, String productName, double price, String department) {
 
     public Product(String sku, String productName, double price, String department) {
-        this.sku = sku;
-        this.productName = productName;
+        if (sku == null || sku.trim().isEmpty()) {
+            throw new IllegalArgumentException("SKU cannot be null or empty.");
+        }
+        if (productName == null || productName.trim().isEmpty()) {
+            throw new IllegalArgumentException("Product name cannot be null or empty.");
+        }
+        if (department == null || department.trim().isEmpty()) {
+            throw new IllegalArgumentException("Department cannot be null or empty.");
+        }
+        if (price <= 0) {
+            throw new IllegalArgumentException("Price must be greater than zero.");
+        }
+
+        this.sku = sku.trim();
+        this.productName = productName.trim();
         this.price = price;
-        this.department = department;
+        this.department = department.trim();
     }
 
-    public String getSku() {
-        return sku;
+    @Override
+    public String toString() {
+        NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(Locale.US);
+        return String.format("SKU: %s, Name: %s, Department: %s, Price: %s",
+                Objects.toString(sku, "N/A"),
+                Objects.toString(productName, "N/A"),
+                Objects.toString(department, "N/A"),
+                currencyFormatter.format(price));
     }
 
-    public void setSKU(String sku) {
-        this.sku = sku;
-    }
+    // Private helper methods
 
-    public String getProductName() {
-        return productName;
-    }
-
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public String getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(String department) {
-        this.department = department;
-    }
 }
