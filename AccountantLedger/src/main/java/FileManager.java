@@ -7,5 +7,6 @@ public class FileManager {
     }
 
     public static List<Transaction> readFile() {
+        return List.of();
     }
 }
