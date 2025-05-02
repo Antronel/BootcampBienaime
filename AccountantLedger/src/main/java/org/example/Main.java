@@ -21,16 +21,16 @@ public class Main {
         File file = new File(fileName);
         if (!file.exists()) {
             try {
-                file.createNewFile(); // Create file if it doesn't exist
+                file.createNewFile();
             } catch (IOException e) {
                 System.out.println("Error creating file.");
                 e.printStackTrace();
-                return; // Exit the program if file cannot be created
+                return;
             }
         }
 
         while (running) {
-            // Home Screen
+            // This is my homescreen
             System.out.println("\n--- Home Screen ---");
             System.out.println("D) Add Deposit");
             System.out.println("P) Make Payment");
@@ -42,7 +42,7 @@ public class Main {
             switch (option) {
                 case "D":
                 case "P":
-                    // Input validation for date
+                    // The person needs to impuut
                     String date = getValidDate(sc);
 
                     System.out.println("Time");
@@ -53,17 +53,15 @@ public class Main {
                     String vendor = sc.nextLine();
                     System.out.println("Amount");
 
-                    // Input validation for amount
                     double amount = getValidAmount(sc);
 
                     if (option.equals("P")) {
-                        amount = -amount; // Make payment a negative value
+                        amount = -amount; // Make payment a negative value from class
                     }
 
                     String entry = date + "|" + time + "|" + description + "|" + vendor + "|" + amount;
                     System.out.println(entry);
 
-                    // Writing the transaction to the file
                     try (FileWriter writer = new FileWriter(fileName, true)) {
                         writer.write(entry + "\n");
                         System.out.println("Successfully wrote to the file.");
@@ -139,7 +137,6 @@ public class Main {
                                     case "1":
                                         System.out.println("\n--- Month To Date ---");
 
-                                        // Get current date (month & year)
                                         LocalDate today = LocalDate.now();
                                         int currentMonth = today.getMonthValue();
                                         int currentYear = today.getYear();
@@ -149,13 +146,12 @@ public class Main {
                                             for (String line : lines) {
                                                 String[] parts = line.split("\\|");
                                                 if (parts.length == 5) {
-                                                    String dateStr = parts[0]; // The date is in the first column (date|time|...)
+                                                    String dateStr = parts[0]; //suggestion from IntelJ
                                                     try {
-                                                        LocalDate transactionDate = LocalDate.parse(dateStr); // Parse the date string into LocalDate
+                                                        LocalDate transactionDate = LocalDate.parse(dateStr);
 
-                                                        // Check if the transaction is from the current month and year
                                                         if (transactionDate.getMonthValue() == currentMonth && transactionDate.getYear() == currentYear) {
-                                                            System.out.println(line); // Print the transaction
+                                                            System.out.println(line); // Print this transaction
                                                         }
                                                     } catch (DateTimeParseException e) {
                                                         System.out.println("Skipping invalid date format in transaction: " + dateStr);
@@ -184,7 +180,7 @@ public class Main {
 
                 case "X":
                     running = false;
-                    System.out.println("Exiting application. Goodbye!");
+                    System.out.println("Exiting application. Goodbye you!");
                     break;
 
                 default:
@@ -193,7 +189,7 @@ public class Main {
         }
     }
 
-    // Helper method to validate date input
+    //Suggestion from IntelJ
     private static String getValidDate(Scanner sc) {
         String date = "";
         boolean validDate = false;
@@ -201,23 +197,23 @@ public class Main {
             System.out.println("Enter the date (YYYY-MM-DD): ");
             date = sc.nextLine();
             try {
-                LocalDate.parse(date, DateTimeFormatter.ISO_LOCAL_DATE); // Try parsing the date
+                LocalDate.parse(date, DateTimeFormatter.ISO_LOCAL_DATE); //Suggestion from IntelJ need help though
                 validDate = true;
             } catch (DateTimeParseException e) {
                 System.out.println("Invalid date format. Please enter in YYYY-MM-DD format.");
-            }
+            }// The user must enter the date like the format I have above or it wont work
         }
         return date;
     }
 
-    // Helper method to validate amount input
+    // I need help with the outlining because I keep getting an error message
     private static double getValidAmount(Scanner sc) {
         double amount = 0.0;
         boolean validAmount = false;
         while (!validAmount) {
             try {
                 System.out.println("Enter the amount: ");
-                amount = Double.parseDouble(sc.nextLine()); // Try parsing the amount
+                amount = Double.parseDouble(sc.nextLine()); //I will try to add or like pair
                 validAmount = true;
             } catch (NumberFormatException e) {
                 System.out.println("Invalid amount. Please enter a valid number.");
