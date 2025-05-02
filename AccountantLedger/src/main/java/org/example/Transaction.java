@@ -67,4 +67,7 @@ public class Transaction {
                 vendor,
                 amount);
     }
+
+    public void add(Transaction transactions) {
+    }
 }
