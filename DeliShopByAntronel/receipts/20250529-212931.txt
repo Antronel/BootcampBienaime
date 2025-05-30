@@ -1,0 +1,12 @@
+DELI-cious Receipt
+Order Date: 2025-05-29 21:29:31
+
+===== ORDER SUMMARY =====
+
+DRINKS:
+small 1 drink - $2.00
+
+==========================
+TOTAL: $2.00
+
+Thank you for your order!

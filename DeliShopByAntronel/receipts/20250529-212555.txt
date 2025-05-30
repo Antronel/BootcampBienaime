@@ -1,0 +1,15 @@
+DELI-cious Receipt
+Order Date: 2025-05-29 21:25:55
+
+===== ORDER SUMMARY =====
+
+DRINKS:
+small pepsi drink - $2.00
+
+CHIPS:
+lays chips - $1.50
+
+==========================
+TOTAL: $3.50
+
+Thank you for your order!
