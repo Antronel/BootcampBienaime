@@ -2,7 +2,7 @@ package org.example;
 
 public class RecipeHelper {
 
-    // Conversion constants
+    // Conversion constants or into the asked of Jon
     private static final double CUPS_TO_MILLILITERS = 236.588;
     private static final double TABLESPOONS_TO_MILLILITERS = 14.7868;
     private static final double TEASPOONS_TO_MILLILITERS = 4.92892;

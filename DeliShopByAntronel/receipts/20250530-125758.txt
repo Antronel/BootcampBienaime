@@ -1,0 +1,15 @@
+DELI-cious Receipt
+Order Date: 2025-05-30 12:57:58
+
+===== ORDER SUMMARY =====
+
+DRINKS:
+small 2 drink - $2.00
+
+CHIPS:
+6 chips - $1.50
+
+==========================
+TOTAL: $3.50
+
+Thank you for your order!

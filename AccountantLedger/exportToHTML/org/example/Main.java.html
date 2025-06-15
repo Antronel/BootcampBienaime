@@ -1,0 +1,246 @@
+<html>
+<head>
+<title>Main.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #7a7e85;}
+.s4 { color: #6aab73;}
+.s5 { color: #2aacb8;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Main.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">org</span><span class="s2">.</span><span class="s1">example</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">io</span><span class="s2">.</span><span class="s1">File</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">io</span><span class="s2">.</span><span class="s1">FileWriter</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">io</span><span class="s2">.</span><span class="s1">IOException</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">nio</span><span class="s2">.</span><span class="s1">file</span><span class="s2">.</span><span class="s1">Files</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">nio</span><span class="s2">.</span><span class="s1">file</span><span class="s2">.</span><span class="s1">Paths</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">time</span><span class="s2">.</span><span class="s1">LocalDate</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">time</span><span class="s2">.</span><span class="s1">format</span><span class="s2">.</span><span class="s1">DateTimeFormatter</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">time</span><span class="s2">.</span><span class="s1">format</span><span class="s2">.</span><span class="s1">DateTimeParseException</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">List</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">Scanner</span><span class="s2">;</span>
+
+<span class="s0">public class </span><span class="s1">Main </span><span class="s2">{</span>
+    <span class="s0">public static void </span><span class="s1">main</span><span class="s2">(</span><span class="s1">String</span><span class="s2">[] </span><span class="s1">args</span><span class="s2">) {</span>
+        <span class="s1">Scanner sc </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Scanner</span><span class="s2">(</span><span class="s1">System</span><span class="s2">.</span><span class="s1">in</span><span class="s2">);</span>
+        <span class="s0">boolean </span><span class="s1">running </span><span class="s2">= </span><span class="s0">true</span><span class="s2">;</span>
+
+        <span class="s3">// File setup</span>
+        <span class="s1">String fileName </span><span class="s2">= </span><span class="s4">&quot;transactions.csv&quot;</span><span class="s2">;</span>
+        <span class="s1">File file </span><span class="s2">= </span><span class="s0">new </span><span class="s1">File</span><span class="s2">(</span><span class="s1">fileName</span><span class="s2">);</span>
+        <span class="s0">if </span><span class="s2">(!</span><span class="s1">file</span><span class="s2">.</span><span class="s1">exists</span><span class="s2">()) {</span>
+            <span class="s0">try </span><span class="s2">{</span>
+                <span class="s1">file</span><span class="s2">.</span><span class="s1">createNewFile</span><span class="s2">();</span>
+            <span class="s2">} </span><span class="s0">catch </span><span class="s2">(</span><span class="s1">IOException e</span><span class="s2">) {</span>
+                <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;Error creating file.&quot;</span><span class="s2">);</span>
+                <span class="s1">e</span><span class="s2">.</span><span class="s1">printStackTrace</span><span class="s2">();</span>
+                <span class="s0">return</span><span class="s2">;</span>
+            <span class="s2">}</span>
+        <span class="s2">}</span>
+
+        <span class="s0">while </span><span class="s2">(</span><span class="s1">running</span><span class="s2">) {</span>
+            <span class="s3">// This is my homescreen</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;</span><span class="s0">\n</span><span class="s4">--- Home Screen ---&quot;</span><span class="s2">);</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;D) Add Deposit&quot;</span><span class="s2">);</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;P) Make Payment&quot;</span><span class="s2">);</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;L) Ledger&quot;</span><span class="s2">);</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;X) Exit&quot;</span><span class="s2">);</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">print</span><span class="s2">(</span><span class="s4">&quot;Choose an option: &quot;</span><span class="s2">);</span>
+            <span class="s1">String option </span><span class="s2">= </span><span class="s1">sc</span><span class="s2">.</span><span class="s1">nextLine</span><span class="s2">().</span><span class="s1">toUpperCase</span><span class="s2">();</span>
+
+            <span class="s0">switch </span><span class="s2">(</span><span class="s1">option</span><span class="s2">) {</span>
+                <span class="s0">case </span><span class="s4">&quot;D&quot;</span><span class="s2">:</span>
+                <span class="s0">case </span><span class="s4">&quot;P&quot;</span><span class="s2">:</span>
+                    <span class="s3">// The person needs to impuut</span>
+                    <span class="s1">String date </span><span class="s2">= </span><span class="s1">getValidDate</span><span class="s2">(</span><span class="s1">sc</span><span class="s2">);</span>
+
+                    <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;Time&quot;</span><span class="s2">);</span>
+                    <span class="s1">String time </span><span class="s2">= </span><span class="s1">sc</span><span class="s2">.</span><span class="s1">nextLine</span><span class="s2">();</span>
+                    <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;Description&quot;</span><span class="s2">);</span>
+                    <span class="s1">String description </span><span class="s2">= </span><span class="s1">sc</span><span class="s2">.</span><span class="s1">nextLine</span><span class="s2">();</span>
+                    <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;Vendor&quot;</span><span class="s2">);</span>
+                    <span class="s1">String vendor </span><span class="s2">= </span><span class="s1">sc</span><span class="s2">.</span><span class="s1">nextLine</span><span class="s2">();</span>
+                    <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;Amount&quot;</span><span class="s2">);</span>
+
+                    <span class="s0">double </span><span class="s1">amount </span><span class="s2">= </span><span class="s1">getValidAmount</span><span class="s2">(</span><span class="s1">sc</span><span class="s2">);</span>
+
+                    <span class="s0">if </span><span class="s2">(</span><span class="s1">option</span><span class="s2">.</span><span class="s1">equals</span><span class="s2">(</span><span class="s4">&quot;P&quot;</span><span class="s2">)) {</span>
+                        <span class="s1">amount </span><span class="s2">= -</span><span class="s1">amount</span><span class="s2">; </span><span class="s3">// Make payment a negative value from class</span>
+                    <span class="s2">}</span>
+
+                    <span class="s1">String entry </span><span class="s2">= </span><span class="s1">date </span><span class="s2">+ </span><span class="s4">&quot;|&quot; </span><span class="s2">+ </span><span class="s1">time </span><span class="s2">+ </span><span class="s4">&quot;|&quot; </span><span class="s2">+ </span><span class="s1">description </span><span class="s2">+ </span><span class="s4">&quot;|&quot; </span><span class="s2">+ </span><span class="s1">vendor </span><span class="s2">+ </span><span class="s4">&quot;|&quot; </span><span class="s2">+ </span><span class="s1">amount</span><span class="s2">;</span>
+                    <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s1">entry</span><span class="s2">);</span>
+
+                    <span class="s0">try </span><span class="s2">(</span><span class="s1">FileWriter writer </span><span class="s2">= </span><span class="s0">new </span><span class="s1">FileWriter</span><span class="s2">(</span><span class="s1">fileName</span><span class="s2">, </span><span class="s0">true</span><span class="s2">)) {</span>
+                        <span class="s1">writer</span><span class="s2">.</span><span class="s1">write</span><span class="s2">(</span><span class="s1">entry </span><span class="s2">+ </span><span class="s4">&quot;</span><span class="s0">\n</span><span class="s4">&quot;</span><span class="s2">);</span>
+                        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;Successfully wrote to the file.&quot;</span><span class="s2">);</span>
+                    <span class="s2">} </span><span class="s0">catch </span><span class="s2">(</span><span class="s1">IOException e</span><span class="s2">) {</span>
+                        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;An error occurred while writing to the file.&quot;</span><span class="s2">);</span>
+                        <span class="s1">e</span><span class="s2">.</span><span class="s1">printStackTrace</span><span class="s2">();</span>
+                    <span class="s2">}</span>
+                    <span class="s0">break</span><span class="s2">;</span>
+
+                <span class="s0">case </span><span class="s4">&quot;L&quot;</span><span class="s2">:</span>
+                    <span class="s0">boolean </span><span class="s1">inLedger </span><span class="s2">= </span><span class="s0">true</span><span class="s2">;</span>
+                    <span class="s0">while </span><span class="s2">(</span><span class="s1">inLedger</span><span class="s2">) {</span>
+                        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;</span><span class="s0">\n</span><span class="s4">--- Ledger Menu ---&quot;</span><span class="s2">);</span>
+                        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;A) All&quot;</span><span class="s2">);</span>
+                        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;D) Deposits&quot;</span><span class="s2">);</span>
+                        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;P) Payments&quot;</span><span class="s2">);</span>
+                        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;R) Reports&quot;</span><span class="s2">);</span>
+                        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;H) Home&quot;</span><span class="s2">);</span>
+                        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">print</span><span class="s2">(</span><span class="s4">&quot;Choose an option: &quot;</span><span class="s2">);</span>
+                        <span class="s1">String ledgerChoice </span><span class="s2">= </span><span class="s1">sc</span><span class="s2">.</span><span class="s1">nextLine</span><span class="s2">().</span><span class="s1">toUpperCase</span><span class="s2">();</span>
+
+                        <span class="s0">switch </span><span class="s2">(</span><span class="s1">ledgerChoice</span><span class="s2">) {</span>
+                            <span class="s0">case </span><span class="s4">&quot;A&quot;</span><span class="s2">:</span>
+                                <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;</span><span class="s0">\n</span><span class="s4">--- All Transactions ---&quot;</span><span class="s2">);</span>
+                                <span class="s0">try </span><span class="s2">{</span>
+                                    <span class="s1">List</span><span class="s2">&lt;</span><span class="s1">String</span><span class="s2">&gt; </span><span class="s1">allLines </span><span class="s2">= </span><span class="s1">Files</span><span class="s2">.</span><span class="s1">readAllLines</span><span class="s2">(</span><span class="s1">Paths</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s1">fileName</span><span class="s2">));</span>
+                                    <span class="s0">for </span><span class="s2">(</span><span class="s1">String line </span><span class="s2">: </span><span class="s1">allLines</span><span class="s2">) {</span>
+                                        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s1">line</span><span class="s2">);</span>
+                                    <span class="s2">}</span>
+                                <span class="s2">} </span><span class="s0">catch </span><span class="s2">(</span><span class="s1">IOException e</span><span class="s2">) {</span>
+                                    <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;Error reading transactions.&quot;</span><span class="s2">);</span>
+                                    <span class="s1">e</span><span class="s2">.</span><span class="s1">printStackTrace</span><span class="s2">();</span>
+                                <span class="s2">}</span>
+                                <span class="s0">break</span><span class="s2">;</span>
+
+                            <span class="s0">case </span><span class="s4">&quot;D&quot;</span><span class="s2">:</span>
+                                <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;</span><span class="s0">\n</span><span class="s4">--- Deposits Only ---&quot;</span><span class="s2">);</span>
+                                <span class="s0">try </span><span class="s2">{</span>
+                                    <span class="s1">List</span><span class="s2">&lt;</span><span class="s1">String</span><span class="s2">&gt; </span><span class="s1">depositLines </span><span class="s2">= </span><span class="s1">Files</span><span class="s2">.</span><span class="s1">readAllLines</span><span class="s2">(</span><span class="s1">Paths</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s1">fileName</span><span class="s2">));</span>
+                                    <span class="s0">for </span><span class="s2">(</span><span class="s1">String line </span><span class="s2">: </span><span class="s1">depositLines</span><span class="s2">) {</span>
+                                        <span class="s1">String</span><span class="s2">[] </span><span class="s1">parts </span><span class="s2">= </span><span class="s1">line</span><span class="s2">.</span><span class="s1">split</span><span class="s2">(</span><span class="s4">&quot;</span><span class="s0">\\</span><span class="s4">|&quot;</span><span class="s2">);</span>
+                                        <span class="s0">if </span><span class="s2">(</span><span class="s1">parts</span><span class="s2">.</span><span class="s1">length </span><span class="s2">== </span><span class="s5">5 </span><span class="s2">&amp;&amp; !</span><span class="s1">parts</span><span class="s2">[</span><span class="s5">4</span><span class="s2">].</span><span class="s1">startsWith</span><span class="s2">(</span><span class="s4">&quot;-&quot;</span><span class="s2">)) {</span>
+                                            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s1">line</span><span class="s2">);</span>
+                                        <span class="s2">}</span>
+                                    <span class="s2">}</span>
+                                <span class="s2">} </span><span class="s0">catch </span><span class="s2">(</span><span class="s1">IOException e</span><span class="s2">) {</span>
+                                    <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;Error reading transactions.&quot;</span><span class="s2">);</span>
+                                    <span class="s1">e</span><span class="s2">.</span><span class="s1">printStackTrace</span><span class="s2">();</span>
+                                <span class="s2">}</span>
+                                <span class="s0">break</span><span class="s2">;</span>
+
+                            <span class="s0">case </span><span class="s4">&quot;P&quot;</span><span class="s2">:</span>
+                                <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;</span><span class="s0">\n</span><span class="s4">--- Payments Only ---&quot;</span><span class="s2">);</span>
+                                <span class="s0">try </span><span class="s2">{</span>
+                                    <span class="s1">List</span><span class="s2">&lt;</span><span class="s1">String</span><span class="s2">&gt; </span><span class="s1">paymentLines </span><span class="s2">= </span><span class="s1">Files</span><span class="s2">.</span><span class="s1">readAllLines</span><span class="s2">(</span><span class="s1">Paths</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s1">fileName</span><span class="s2">));</span>
+                                    <span class="s0">for </span><span class="s2">(</span><span class="s1">String line </span><span class="s2">: </span><span class="s1">paymentLines</span><span class="s2">) {</span>
+                                        <span class="s1">String</span><span class="s2">[] </span><span class="s1">parts </span><span class="s2">= </span><span class="s1">line</span><span class="s2">.</span><span class="s1">split</span><span class="s2">(</span><span class="s4">&quot;</span><span class="s0">\\</span><span class="s4">|&quot;</span><span class="s2">);</span>
+                                        <span class="s0">if </span><span class="s2">(</span><span class="s1">parts</span><span class="s2">.</span><span class="s1">length </span><span class="s2">== </span><span class="s5">5 </span><span class="s2">&amp;&amp; </span><span class="s1">parts</span><span class="s2">[</span><span class="s5">4</span><span class="s2">].</span><span class="s1">startsWith</span><span class="s2">(</span><span class="s4">&quot;-&quot;</span><span class="s2">)) { </span><span class="s3">// Check for negative amount</span>
+                                            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s1">line</span><span class="s2">);</span>
+                                        <span class="s2">}</span>
+                                    <span class="s2">}</span>
+                                <span class="s2">} </span><span class="s0">catch </span><span class="s2">(</span><span class="s1">IOException e</span><span class="s2">) {</span>
+                                    <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;Error reading transactions.&quot;</span><span class="s2">);</span>
+                                    <span class="s1">e</span><span class="s2">.</span><span class="s1">printStackTrace</span><span class="s2">();</span>
+                                <span class="s2">}</span>
+                                <span class="s0">break</span><span class="s2">;</span>
+
+                            <span class="s0">case </span><span class="s4">&quot;R&quot;</span><span class="s2">:</span>
+                                <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;</span><span class="s0">\n</span><span class="s4">--- Reports ---&quot;</span><span class="s2">);</span>
+                                <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;1) Month To Date&quot;</span><span class="s2">);</span>
+                                <span class="s1">String reportChoice </span><span class="s2">= </span><span class="s1">sc</span><span class="s2">.</span><span class="s1">nextLine</span><span class="s2">();</span>
+                                <span class="s0">switch </span><span class="s2">(</span><span class="s1">reportChoice</span><span class="s2">) {</span>
+                                    <span class="s0">case </span><span class="s4">&quot;1&quot;</span><span class="s2">:</span>
+                                        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;</span><span class="s0">\n</span><span class="s4">--- Month To Date ---&quot;</span><span class="s2">);</span>
+
+                                        <span class="s1">LocalDate today </span><span class="s2">= </span><span class="s1">LocalDate</span><span class="s2">.</span><span class="s1">now</span><span class="s2">();</span>
+                                        <span class="s0">int </span><span class="s1">currentMonth </span><span class="s2">= </span><span class="s1">today</span><span class="s2">.</span><span class="s1">getMonthValue</span><span class="s2">();</span>
+                                        <span class="s0">int </span><span class="s1">currentYear </span><span class="s2">= </span><span class="s1">today</span><span class="s2">.</span><span class="s1">getYear</span><span class="s2">();</span>
+
+                                        <span class="s0">try </span><span class="s2">{</span>
+                                            <span class="s1">List</span><span class="s2">&lt;</span><span class="s1">String</span><span class="s2">&gt; </span><span class="s1">lines </span><span class="s2">= </span><span class="s1">Files</span><span class="s2">.</span><span class="s1">readAllLines</span><span class="s2">(</span><span class="s1">Paths</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s1">fileName</span><span class="s2">));</span>
+                                            <span class="s0">for </span><span class="s2">(</span><span class="s1">String line </span><span class="s2">: </span><span class="s1">lines</span><span class="s2">) {</span>
+                                                <span class="s1">String</span><span class="s2">[] </span><span class="s1">parts </span><span class="s2">= </span><span class="s1">line</span><span class="s2">.</span><span class="s1">split</span><span class="s2">(</span><span class="s4">&quot;</span><span class="s0">\\</span><span class="s4">|&quot;</span><span class="s2">);</span>
+                                                <span class="s0">if </span><span class="s2">(</span><span class="s1">parts</span><span class="s2">.</span><span class="s1">length </span><span class="s2">== </span><span class="s5">5</span><span class="s2">) {</span>
+                                                    <span class="s1">String dateStr </span><span class="s2">= </span><span class="s1">parts</span><span class="s2">[</span><span class="s5">0</span><span class="s2">]; </span><span class="s3">//suggestion from IntelJ</span>
+                                                    <span class="s0">try </span><span class="s2">{</span>
+                                                        <span class="s1">LocalDate transactionDate </span><span class="s2">= </span><span class="s1">LocalDate</span><span class="s2">.</span><span class="s1">parse</span><span class="s2">(</span><span class="s1">dateStr</span><span class="s2">);</span>
+
+                                                        <span class="s0">if </span><span class="s2">(</span><span class="s1">transactionDate</span><span class="s2">.</span><span class="s1">getMonthValue</span><span class="s2">() == </span><span class="s1">currentMonth </span><span class="s2">&amp;&amp; </span><span class="s1">transactionDate</span><span class="s2">.</span><span class="s1">getYear</span><span class="s2">() == </span><span class="s1">currentYear</span><span class="s2">) {</span>
+                                                            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s1">line</span><span class="s2">); </span><span class="s3">// Print this transaction</span>
+                                                        <span class="s2">}</span>
+                                                    <span class="s2">} </span><span class="s0">catch </span><span class="s2">(</span><span class="s1">DateTimeParseException e</span><span class="s2">) {</span>
+                                                        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;Skipping invalid date format in transaction: &quot; </span><span class="s2">+ </span><span class="s1">dateStr</span><span class="s2">);</span>
+                                                    <span class="s2">}</span>
+                                                <span class="s2">}</span>
+                                            <span class="s2">}</span>
+                                        <span class="s2">} </span><span class="s0">catch </span><span class="s2">(</span><span class="s1">IOException e</span><span class="s2">) {</span>
+                                            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;Error reading transactions.&quot;</span><span class="s2">);</span>
+                                            <span class="s1">e</span><span class="s2">.</span><span class="s1">printStackTrace</span><span class="s2">();</span>
+                                        <span class="s2">}</span>
+                                        <span class="s0">break</span><span class="s2">;</span>
+                                    <span class="s0">default</span><span class="s2">:</span>
+                                        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;Invalid option.&quot;</span><span class="s2">);</span>
+                                <span class="s2">}</span>
+                                <span class="s0">break</span><span class="s2">;</span>
+
+                            <span class="s0">case </span><span class="s4">&quot;H&quot;</span><span class="s2">:</span>
+                                <span class="s1">inLedger </span><span class="s2">= </span><span class="s0">false</span><span class="s2">;</span>
+                                <span class="s0">break</span><span class="s2">;</span>
+
+                            <span class="s0">default</span><span class="s2">:</span>
+                                <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;Invalid option. Please try again.&quot;</span><span class="s2">);</span>
+                        <span class="s2">}</span>
+                    <span class="s2">}</span>
+                    <span class="s0">break</span><span class="s2">;</span>
+
+                <span class="s0">case </span><span class="s4">&quot;X&quot;</span><span class="s2">:</span>
+                    <span class="s1">running </span><span class="s2">= </span><span class="s0">false</span><span class="s2">;</span>
+                    <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;Exiting application. Goodbye you!&quot;</span><span class="s2">);</span>
+                    <span class="s0">break</span><span class="s2">;</span>
+
+                <span class="s0">default</span><span class="s2">:</span>
+                    <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;Invalid option. Please try again.&quot;</span><span class="s2">);</span>
+            <span class="s2">}</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+
+    <span class="s3">//Suggestion from IntelJ</span>
+    <span class="s0">private static </span><span class="s1">String getValidDate</span><span class="s2">(</span><span class="s1">Scanner sc</span><span class="s2">) {</span>
+        <span class="s1">String date </span><span class="s2">= </span><span class="s4">&quot;&quot;</span><span class="s2">;</span>
+        <span class="s0">boolean </span><span class="s1">validDate </span><span class="s2">= </span><span class="s0">false</span><span class="s2">;</span>
+        <span class="s0">while </span><span class="s2">(!</span><span class="s1">validDate</span><span class="s2">) {</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;Enter the date (YYYY-MM-DD): &quot;</span><span class="s2">);</span>
+            <span class="s1">date </span><span class="s2">= </span><span class="s1">sc</span><span class="s2">.</span><span class="s1">nextLine</span><span class="s2">();</span>
+            <span class="s0">try </span><span class="s2">{</span>
+                <span class="s1">LocalDate</span><span class="s2">.</span><span class="s1">parse</span><span class="s2">(</span><span class="s1">date</span><span class="s2">, </span><span class="s1">DateTimeFormatter</span><span class="s2">.</span><span class="s1">ISO_LOCAL_DATE</span><span class="s2">); </span><span class="s3">//Suggestion from IntelJ need help though</span>
+                <span class="s1">validDate </span><span class="s2">= </span><span class="s0">true</span><span class="s2">;</span>
+            <span class="s2">} </span><span class="s0">catch </span><span class="s2">(</span><span class="s1">DateTimeParseException e</span><span class="s2">) {</span>
+                <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;Invalid date format. Please enter in YYYY-MM-DD format.&quot;</span><span class="s2">);</span>
+            <span class="s2">}</span><span class="s3">// The user must enter the date like the format I have above or it wont work</span>
+        <span class="s2">}</span>
+        <span class="s0">return </span><span class="s1">date</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s3">// I need help with the outlining because I keep getting an error message</span>
+    <span class="s0">private static double </span><span class="s1">getValidAmount</span><span class="s2">(</span><span class="s1">Scanner sc</span><span class="s2">) {</span>
+        <span class="s0">double </span><span class="s1">amount </span><span class="s2">= </span><span class="s5">0.0</span><span class="s2">;</span>
+        <span class="s0">boolean </span><span class="s1">validAmount </span><span class="s2">= </span><span class="s0">false</span><span class="s2">;</span>
+        <span class="s0">while </span><span class="s2">(!</span><span class="s1">validAmount</span><span class="s2">) {</span>
+            <span class="s0">try </span><span class="s2">{</span>
+                <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;Enter the amount: &quot;</span><span class="s2">);</span>
+                <span class="s1">amount </span><span class="s2">= </span><span class="s1">Double</span><span class="s2">.</span><span class="s1">parseDouble</span><span class="s2">(</span><span class="s1">sc</span><span class="s2">.</span><span class="s1">nextLine</span><span class="s2">()); </span><span class="s3">//I will try to add or like pair</span>
+                <span class="s1">validAmount </span><span class="s2">= </span><span class="s0">true</span><span class="s2">;</span>
+            <span class="s2">} </span><span class="s0">catch </span><span class="s2">(</span><span class="s1">NumberFormatException e</span><span class="s2">) {</span>
+                <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;Invalid amount. Please enter a valid number.&quot;</span><span class="s2">);</span>
+            <span class="s2">}</span>
+        <span class="s2">}</span>
+        <span class="s0">return </span><span class="s1">amount</span><span class="s2">;</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+</pre>
+</body>
+</html>

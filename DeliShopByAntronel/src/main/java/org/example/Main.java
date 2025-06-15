@@ -9,7 +9,7 @@ public class Main {
     private static Order currentOrder = new Order();
 
     public static void main(String[] args) {
-        System.out.println("Welcome to DELI-cious!");
+        System.out.println("Welcome to Picca-DELI by Antronel!");
         boolean running = true;
 
         while (running) {
@@ -25,7 +25,7 @@ public class Main {
                     orderMenu();
                 }
                 case "0" -> {
-                    System.out.println("Thanks for visiting DELI-cious!");
+                    System.out.println("Thanks for visiting Picca-DELI!");
                     running = false;
                 }
                 default -> System.out.println("Invalid option.");

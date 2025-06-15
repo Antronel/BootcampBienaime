@@ -3,7 +3,7 @@ package org.example;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) {ww22
                 Scanner scanner = new Scanner(System.in);
                 System.out.println("What is the principal amount?");
                 double p = scanner.nextDouble();
@@ -21,7 +21,8 @@ public class Main {
                 double right=(l-1);
                 double monthlyPayments= left/right;
                 double interest = (monthlyPayments * n) - p;
-                System.out.printf("Monthly bill is $%.2f,total interest due is $%.2f",monthlyPayments,interest);
+                System.out.printf("Monthly bill is $%.2f,total interest due is $%.2f",monthlyPayments,interest)
+                so;
 
 
 

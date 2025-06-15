@@ -1,12 +1,12 @@
 package org.example;
 
-public class ExoticPet {
+public class Product {
     private String id;
     private String species;
     private double price;
     private String habitat;
 
-    public ExoticPet(String id, String species, double price, String habitat) {
+    public Product(String id, String species, double price, String habitat) {
         this.id = id;
         this.species = species;
         this.price = price;
