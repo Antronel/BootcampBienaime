@@ -1,6 +1,5 @@
-package org.yearup.data.mysql;
 
-import org.yearup.models.Product;
+package org.yearup.data.mysql;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -19,6 +18,4 @@ public abstract class MySqlDaoBase
     {
         return dataSource.getConnection();
     }
-
-    public abstract void update(int productId, Product product);
 }

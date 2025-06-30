@@ -1,10 +1,5 @@
+
 package org.yearup.models;
-
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.*;
-import org.yearup.data.CategoryDao;
-
-import java.util.List;
 
 public class Category
 {
@@ -52,5 +47,7 @@ public class Category
     {
         this.description = description;
     }
-}
 
+    public void setId(int categoryId) {
+    }
+}

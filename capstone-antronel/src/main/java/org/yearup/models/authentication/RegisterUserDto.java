@@ -1,3 +1,4 @@
+
 package org.yearup.models.authentication;
 
 import javax.validation.constraints.NotEmpty;

@@ -1,3 +1,4 @@
+
 package org.yearup.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;

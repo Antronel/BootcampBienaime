@@ -1,10 +1,9 @@
+
 package org.yearup.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.math.BigDecimal;
-import java.util.HashMap;
-import java.util.Map;
 
 public class ShoppingCartItem
 {

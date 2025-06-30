@@ -1,3 +1,4 @@
+
 package org.yearup.security.jwt;
 
 import org.slf4j.Logger;
